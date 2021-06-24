@@ -3,36 +3,25 @@ package com.georgy_r.podlodkaandroidcrew
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.georgy_r.podlodkaandroidcrew.ui.theme.PodlodkaAndroidCrewTheme
+import com.georgy_r.podlodkaandroidcrew.base_ui.theme.PodlodkaAndroidCrewTheme
+import com.georgy_r.podlodkaandroidcrew.presentation.SessionListViewModel
+import com.georgy_r.podlodkaandroidcrew.presentation.ui.SessionList
 
 class MainActivity : ComponentActivity() {
+
+    private val sessionListViewModel: SessionListViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             PodlodkaAndroidCrewTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    SessionList(sessionListViewModel.session.value ?: emptyList())
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    PodlodkaAndroidCrewTheme {
-        Greeting("Android")
     }
 }

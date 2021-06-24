@@ -1,6 +1,6 @@
 package com.georgy_r.podlodkaandroidcrew.data
 
-val MockSessions = listOf(
+val mockSessions = listOf(
     Session(
         id = "1",
         speaker = "Степан Чурюканов",
