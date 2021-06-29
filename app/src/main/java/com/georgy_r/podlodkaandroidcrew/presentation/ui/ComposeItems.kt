@@ -27,37 +27,43 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.georgy_r.podlodkaandroidcrew.data.Session
 import com.georgy_r.podlodkaandroidcrew.data.mockSessions
+import com.georgy_r.podlodkaandroidcrew.presentation.SessionUiItem
 import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
-fun SessionList(sessions: List<Session>) {
+fun SessionList(sessions: List<SessionUiItem>) {
     LazyColumn {
-        items(sessions) { SessionCard(it) }
+        items(sessions) {
+            when (it) {
+                is SessionUiItem.Session -> SessionCard(it)
+                is SessionUiItem.Date -> SessionDate(it.title)
+            }
+
+        }
     }
 }
 
 @Composable
-fun SessionCard(session: Session) {
+fun SessionCard(session: SessionUiItem.Session) {
     Card(
+        elevation = 8.dp,
+        shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth(),
-        elevation = 8.dp,
-        shape = RoundedCornerShape(8.dp)
+            .fillMaxWidth()
     ) {
         Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(16.dp)
         ) {
             Image(
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(shape = CircleShape),
                 painter = rememberCoilPainter(request = session.imageUrl),
                 contentScale = ContentScale.Crop,
                 contentDescription = "Speaker Photo",
+                modifier = Modifier
+                    .size(64.dp)
+                    .clip(shape = CircleShape),
             )
 
             Column(
@@ -93,8 +99,33 @@ fun SessionCard(session: Session) {
     }
 }
 
+@Composable
+fun SessionDate(title: String) {
+    Text(
+        text = title,
+        color = Color.Gray,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewSessionCard() {
-    SessionCard(session = mockSessions.first())
+    SessionCard(
+        session = mockSessions.first().run {
+            SessionUiItem.Session(
+                id,
+                speaker,
+                timeInterval,
+                description,
+                imageUrl
+            )
+        }
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewSessionDate() {
+    SessionDate(title = "19 апреля")
 }

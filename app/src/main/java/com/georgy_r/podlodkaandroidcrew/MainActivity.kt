@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PodlodkaAndroidCrewTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    SessionList(sessionListViewModel.session.value ?: emptyList())
+                    SessionList(sessionListViewModel.sessionItems.value ?: emptyList())
                 }
             }
         }
