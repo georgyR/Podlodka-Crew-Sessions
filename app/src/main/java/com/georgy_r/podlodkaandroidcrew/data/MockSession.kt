@@ -1,5 +1,7 @@
 package com.georgy_r.podlodkaandroidcrew.data
 
+import com.georgy_r.podlodkaandroidcrew.presentation.model.SessionUiItem
+
 val mockSessions = listOf(
     Session(
         id = "1",
@@ -146,3 +148,14 @@ val mockSessions = listOf(
         imageUrl = "https://static.tildacdn.com/tild3433-3138-4165-b135-653934323134/IMG_0653.JPG"
     ),
 )
+
+val mockSessionUiItem = mockSessions.first().run {
+    SessionUiItem.Session(
+        id = id,
+        speaker = speaker,
+        date = date,
+        timeInterval = timeInterval,
+        description = description,
+        imageUrl = imageUrl
+    )
+}

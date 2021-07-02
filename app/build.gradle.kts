@@ -39,7 +39,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
-        kotlinCompilerVersion = "1.5.10"
+        kotlinCompilerVersion = "1.5.20"
     }
 }
 
@@ -53,6 +53,6 @@ dependencies {
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.0-beta02")
-    implementation("com.google.accompanist:accompanist-coil:0.10.0")
+    implementation("androidx.activity:activity-compose:1.3.0-rc01")
+    implementation("com.google.accompanist:accompanist-coil:0.12.0")
 }
