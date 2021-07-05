@@ -1,4 +1,4 @@
-package com.georgy_r.podlodkaandroidcrew.presentation.ui
+package com.georgy_r.podlodkaandroidcrew.feature.home.ui
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text

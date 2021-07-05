@@ -8,12 +8,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import com.georgy_r.podlodkaandroidcrew.base_ui.theme.PodlodkaAndroidCrewTheme
-import com.georgy_r.podlodkaandroidcrew.presentation.HomeViewModel
-import com.georgy_r.podlodkaandroidcrew.presentation.model.HomeUiState
-import com.georgy_r.podlodkaandroidcrew.presentation.ui.FavoriteList
-import com.georgy_r.podlodkaandroidcrew.presentation.ui.SectionHeader
-import com.georgy_r.podlodkaandroidcrew.presentation.ui.SessionItem
+import com.georgy_r.podlodkaandroidcrew.common.base_ui.theme.PodlodkaAndroidCrewTheme
+import com.georgy_r.podlodkaandroidcrew.feature.home.HomeViewModel
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.HomeUiState
+import com.georgy_r.podlodkaandroidcrew.feature.home.ui.FavoriteList
+import com.georgy_r.podlodkaandroidcrew.feature.home.ui.SectionHeader
+import com.georgy_r.podlodkaandroidcrew.feature.home.ui.SessionItem
 
 class MainActivity : ComponentActivity() {
 

@@ -1,7 +1,7 @@
-package com.georgy_r.podlodkaandroidcrew.presentation
+package com.georgy_r.podlodkaandroidcrew.feature.home
 
-import com.georgy_r.podlodkaandroidcrew.data.Session
-import com.georgy_r.podlodkaandroidcrew.presentation.model.SessionUiItem
+import com.georgy_r.podlodkaandroidcrew.common.data.Session
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.SessionUiItem
 
 class SessionUiItemsConverter {
 

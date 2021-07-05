@@ -1,4 +1,4 @@
-package com.georgy_r.podlodkaandroidcrew.presentation.ui
+package com.georgy_r.podlodkaandroidcrew.feature.home.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.georgy_r.podlodkaandroidcrew.data.mockSessionUiItem
-import com.georgy_r.podlodkaandroidcrew.presentation.model.SessionUiItem
+import com.georgy_r.podlodkaandroidcrew.common.data.mockSessionUiItem
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.SessionUiItem
 
 private const val descriptionLineCount = 3
 

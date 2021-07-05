@@ -1,6 +1,6 @@
-package com.georgy_r.podlodkaandroidcrew.data
+package com.georgy_r.podlodkaandroidcrew.common.data
 
-import com.georgy_r.podlodkaandroidcrew.presentation.model.SessionUiItem
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.SessionUiItem
 
 val mockSessions = listOf(
     Session(

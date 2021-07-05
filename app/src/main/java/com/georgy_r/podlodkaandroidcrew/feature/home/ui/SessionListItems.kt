@@ -1,6 +1,5 @@
-package com.georgy_r.podlodkaandroidcrew.presentation.ui
+package com.georgy_r.podlodkaandroidcrew.feature.home.ui
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,8 +25,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.georgy_r.podlodkaandroidcrew.data.mockSessionUiItem
-import com.georgy_r.podlodkaandroidcrew.presentation.model.SessionUiItem
+import com.georgy_r.podlodkaandroidcrew.common.data.mockSessionUiItem
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.SessionUiItem
 import com.google.accompanist.coil.rememberCoilPainter
 
 

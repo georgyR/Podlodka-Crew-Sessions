@@ -1,4 +1,4 @@
-package com.georgy_r.podlodkaandroidcrew.base_ui.theme
+package com.georgy_r.podlodkaandroidcrew.common.base_ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

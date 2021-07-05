@@ -1,10 +1,10 @@
-package com.georgy_r.podlodkaandroidcrew.presentation
+package com.georgy_r.podlodkaandroidcrew.feature.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.georgy_r.podlodkaandroidcrew.data.mockSessions
-import com.georgy_r.podlodkaandroidcrew.presentation.model.HomeUiState
+import com.georgy_r.podlodkaandroidcrew.common.data.mockSessions
+import com.georgy_r.podlodkaandroidcrew.feature.home.model.HomeUiState
 
 class HomeViewModel : ViewModel() {
 

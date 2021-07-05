@@ -1,4 +1,4 @@
-package com.georgy_r.podlodkaandroidcrew.data
+package com.georgy_r.podlodkaandroidcrew.common.data
 
 data class Session(
     val id: String,

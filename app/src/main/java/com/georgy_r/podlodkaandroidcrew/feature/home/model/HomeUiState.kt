@@ -1,4 +1,4 @@
-package com.georgy_r.podlodkaandroidcrew.presentation.model
+package com.georgy_r.podlodkaandroidcrew.feature.home.model
 
 data class HomeUiState(
     val favoriteSessions: List<SessionUiItem.Session>,
