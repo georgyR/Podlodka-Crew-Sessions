@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.livedata.observeAsState
 import com.georgy_r.podlodkaandroidcrew.common.base_ui.theme.PodlodkaAndroidCrewTheme
 import com.georgy_r.podlodkaandroidcrew.feature.home.HomeViewModel
 import com.georgy_r.podlodkaandroidcrew.feature.home.model.HomeUiState
@@ -17,19 +18,22 @@ import com.georgy_r.podlodkaandroidcrew.feature.home.ui.SessionItem
 
 class MainActivity : ComponentActivity() {
 
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val state = homeViewModel.state.value ?: HomeUiState.EMPTY
         setContent {
+            val state = viewModel.state.observeAsState().value ?: HomeUiState.EMPTY
+
             PodlodkaAndroidCrewTheme {
                 Surface(color = MaterialTheme.colors.background) {
                     LazyColumn {
-                        item { SectionHeader("Избранное") }
+                        if (state.favoriteSessions.isNotEmpty()) {
+                            item { SectionHeader("Избранное") }
+                        }
                         item { FavoriteList(state.favoriteSessions) }
                         item { SectionHeader("Секции") }
-                        items(state.sessionItems) { SessionItem(it) }
+                        items(state.sessionItems) { SessionItem(it, viewModel::onFavoriteClicked) }
                     }
                 }
             }

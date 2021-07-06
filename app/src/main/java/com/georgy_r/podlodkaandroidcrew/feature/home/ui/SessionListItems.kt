@@ -1,6 +1,7 @@
 package com.georgy_r.podlodkaandroidcrew.feature.home.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,15 +32,15 @@ import com.google.accompanist.coil.rememberCoilPainter
 
 
 @Composable
-fun SessionItem(item: SessionUiItem) {
+fun SessionItem(item: SessionUiItem, onFavoriteChanged: (id: String) -> Unit) {
     when (item) {
-        is SessionUiItem.Session -> SessionCard(item)
+        is SessionUiItem.Session -> SessionCard(item, onFavoriteChanged)
         is SessionUiItem.Date -> SessionDate(item.title)
     }
 }
 
 @Composable
-fun SessionCard(session: SessionUiItem.Session) {
+fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) -> Unit) {
     Card(
         elevation = 8.dp,
         shape = RoundedCornerShape(8.dp),
@@ -84,11 +85,13 @@ fun SessionCard(session: SessionUiItem.Session) {
                 )
             }
             Icon(
-                modifier = Modifier.size(24.dp),
                 imageVector = Icons.Outlined.Favorite,
                 contentDescription = null,
-                tint = Color.Gray,
-            )
+                tint = if(session.isFavorite) Color.Red else Color.Gray,
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable { onFavoriteChanged.invoke(session.id) },
+                )
         }
     }
 }
@@ -106,7 +109,7 @@ fun SessionDate(title: String) {
 @Preview(showBackground = true)
 @Composable
 private fun PreviewSessionCard() {
-    SessionCard(session = mockSessionUiItem)
+    SessionCard(session = mockSessionUiItem) {}
 }
 
 @Preview(showBackground = true)
