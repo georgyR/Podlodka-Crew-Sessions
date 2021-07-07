@@ -2,6 +2,7 @@ package com.georgy_r.podlodkaandroidcrew.feature.home.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +16,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,21 +53,21 @@ fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) 
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(vertical = 16.dp)
         ) {
             Image(
                 painter = rememberCoilPainter(request = session.imageUrl),
                 contentScale = ContentScale.Crop,
                 contentDescription = "Speaker Photo",
                 modifier = Modifier
+                    .padding(horizontal = 16.dp)
                     .size(64.dp)
-                    .clip(shape = CircleShape),
+                    .clip(shape = CircleShape)
             )
 
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(horizontal = 16.dp)
             ) {
                 Text(
                     text = session.speaker,
@@ -87,11 +90,16 @@ fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) 
             Icon(
                 imageVector = Icons.Outlined.Favorite,
                 contentDescription = null,
-                tint = if(session.isFavorite) Color.Red else Color.Gray,
+                tint = if (session.isFavorite) Color.Red else Color.Gray,
                 modifier = Modifier
-                    .size(24.dp)
-                    .clickable { onFavoriteChanged.invoke(session.id) },
-                )
+                    .size(56.dp)
+                    .clickable(
+                        indication = rememberRipple(bounded = false),
+                        interactionSource = remember { MutableInteractionSource() },
+                        onClick = { onFavoriteChanged.invoke(session.id) }
+                    )
+                    .padding(16.dp)
+            )
         }
     }
 }
