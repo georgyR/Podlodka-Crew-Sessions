@@ -29,9 +29,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
 import com.georgy_r.podlodkaandroidcrew.common.data.mockSessionUiItem
 import com.georgy_r.podlodkaandroidcrew.feature.home.model.SessionUiItem
-import com.google.accompanist.coil.rememberCoilPainter
 
 
 @Composable
@@ -56,7 +56,7 @@ fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) 
             modifier = Modifier.padding(vertical = 16.dp)
         ) {
             Image(
-                painter = rememberCoilPainter(request = session.imageUrl),
+                painter = rememberImagePainter(session.imageUrl),
                 contentScale = ContentScale.Crop,
                 contentDescription = "Speaker Photo",
                 modifier = Modifier
@@ -82,7 +82,7 @@ fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) 
                 Text(
                     text = session.description,
                     style = MaterialTheme.typography.body2,
-                    color = Color.Gray,
+                    fontWeight = FontWeight.Light,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -108,7 +108,7 @@ fun SessionCard(session: SessionUiItem.Session, onFavoriteChanged: (id: String) 
 fun SessionDate(title: String) {
     Text(
         text = title,
-        color = Color.Gray,
+        fontWeight = FontWeight.Light,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
     )
 }
